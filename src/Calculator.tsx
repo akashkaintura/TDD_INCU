@@ -6,6 +6,7 @@ const Calculator: React.FC = () => {
     const [result, setResult] = useState<number | string>("");
 
     const handleCalculation = () => {
+        console.log("Input:", input);
         try {
             const sum = add(input);
             setResult(sum);
@@ -25,9 +26,9 @@ const Calculator: React.FC = () => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Enter numbers"
+                placeholder="Enter Value"
             />
-            <button onClick={handleCalculation}>Calculate</button>
+            <button onClick={handleCalculation}>Check</button>
             <p>Result: {result}</p>
         </div>
     );

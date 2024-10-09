@@ -11,7 +11,13 @@ export function add(numbers: string): number {
         numString = numbers.substring(delimiterEnd + 1);
     }
 
-    const numberArray = numString.split(new RegExp(`[${delimiter}\n]`)).map(Number);
+    const numberArray = numString.split(new RegExp(`[${delimiter}\n]`)).map((num) => {
+        const parsedNum = Number(num.trim());
+        if (isNaN(parsedNum)) {
+            throw new Error(`Invalid number: ${num}`);
+        }
+        return parsedNum;
+    });
 
     const negatives = numberArray.filter(n => n < 0);
     if (negatives.length > 0) {
